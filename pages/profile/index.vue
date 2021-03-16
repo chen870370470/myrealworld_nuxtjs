@@ -7,17 +7,26 @@
 
           <div class="col-xs-12 col-md-10 offset-md-1">
             <img
-              src="http://i.imgur.com/Qr71crq.jpg"
+              :src="profile.image"
               class="user-img"
             />
-            <h4>Eric Simons</h4>
+            <h4>{{profile.username}}</h4>
             <p>
-              Cofounder @GoThinkster, lived in Aol's HQ for a few months, kinda looks like Peeta from the Hunger Games
+              {{profile.bio}}
             </p>
-            <button class="btn btn-sm btn-outline-secondary action-btn">
+            <button
+              class="btn btn-sm btn-outline-secondary action-btn"
+              v-if="profile.username!==user.username"
+            >
               <i class="ion-plus-round"></i>
-              &nbsp;
               Follow Eric Simons
+            </button>
+            <button
+              class="btn btn-sm btn-outline-secondary action-btn"
+              v-else
+            >
+              <i class="ion-gear-a"></i>
+              Edit Profile Settings
             </button>
           </div>
 
@@ -107,9 +116,22 @@
 </template>
 
 <script>
+import { getProfile } from '@/api/profile'
+import { mapState } from 'vuex'
+
 export default {
   middleware: 'userenticated',
   name: 'UserProfile',
+  async asyncData({ params }) {
+    const { data } = await getProfile(params.username)
+    const { profile } = data
+    return {
+      profile,
+    }
+  },
+  computed: {
+    ...mapState(['user']),
+  },
 }
 </script>
 
