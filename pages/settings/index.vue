@@ -13,13 +13,14 @@
                   class="form-control"
                   type="text"
                   placeholder="URL of profile picture"
+                  v-model="user.image"
                 >
               </fieldset>
               <fieldset class="form-group">
                 <input
                   class="form-control form-control-lg"
                   type="text"
-                  placeholder="Your Name"
+                  v-model="user.username"
                 >
               </fieldset>
               <fieldset class="form-group">
@@ -27,13 +28,14 @@
                   class="form-control form-control-lg"
                   rows="8"
                   placeholder="Short bio about you"
+                  :value="user.bio"
                 ></textarea>
               </fieldset>
               <fieldset class="form-group">
                 <input
                   class="form-control form-control-lg"
                   type="text"
-                  placeholder="Email"
+                  :value="user.email"
                 >
               </fieldset>
               <fieldset class="form-group">
@@ -56,9 +58,14 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   middleware: 'userenticated',
   name: 'SettingsIndex',
+  computed: {
+    ...mapState(['user']),
+  },
 }
 </script>
 

@@ -21,13 +21,14 @@
               <i class="ion-plus-round"></i>
               Follow Eric Simons
             </button>
-            <button
+            <nuxt-link
+              to="/settings"
               class="btn btn-sm btn-outline-secondary action-btn"
               v-else
             >
               <i class="ion-gear-a"></i>
               Edit Profile Settings
-            </button>
+            </nuxt-link>
           </div>
 
         </div>

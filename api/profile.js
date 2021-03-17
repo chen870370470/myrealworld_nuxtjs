@@ -7,3 +7,5 @@ export const getProfile = (username) => {
     url: `/api/profiles/${username}`,
   });
 };
+
+
