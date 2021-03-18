@@ -17,11 +17,21 @@ export const register = (data) => {
   });
 };
 
+// 查询当前用户
+export const currentUser = () => {
+  return request({
+    method: "GET",
+    url: "/api/user",
+  });
+};
+
 // 更新用户信息
-export const updateUser = (data) => {
+export const updateUser = (user) => {
   return request({
     method: "PUT",
-    url: "/api/users",
-    data,
+    url: "/api/user",
+    data: {
+      user,
+    },
   });
 };

@@ -17,7 +17,7 @@
             >Have an account?</nuxt-link>
 
           </p>
-
+          <!-- 错误信息提示 -->
           <ul class="error-messages">
             <template v-for="(messages,field) in errors">
               <li
@@ -75,7 +75,7 @@ import { login, register } from '@/api/user'
 const Cookie = process.client ? require('js-cookie') : undefined
 
 export default {
-  middleware:'notUserenticated',
+  middleware: 'notUserenticated',
   name: 'loginIndex',
   computed: {
     isLogin() {
